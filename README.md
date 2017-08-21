@@ -1,6 +1,6 @@
-### Docker Image for CS 6476
+## Docker Image for CS 6476
 
-This repo contains a basic setup for Georgia Tech's CS6476 class based on Fall 2017 requirements. I'm utilizing
+This repo contains a basic setup for Georgia Tech's CS 6476 class based on Fall 2017 requirements. I'm utilizing
 Alpine in an effort to reduce the base image size for python.
 
 #### Steps to install for OSX
@@ -21,10 +21,9 @@ $ docker version
 
 #### How to run this particular image?
 ```
-$ git clone
+$ git clone git@github.com:bigthyme/cv.git
+$ cd cv
 $ docker build -t <image_name> <Dockerfile>
 $ docker run -v "$(pwd)":/cv <image_name> <command>
 ```
 
-#### License
-[MIT](https://github.com/angular/angular.js/blob/master/LICENSE)
