@@ -24,6 +24,6 @@ $ docker version
 $ git clone git@github.com:bigthyme/cv.git
 $ cd cv
 $ docker build -t <image_name> <Dockerfile>
-$ docker run -v  -it "$(pwd)":/app <image_name> <command>
+$ docker run -v  -it "$(pwd)":/app <image_name>
 ```
 
