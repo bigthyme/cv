@@ -33,3 +33,5 @@ $ docker run -v  -it "$(pwd)":/app <image_name>
 # while in docker
 $ cd ps00 && python ps0.py
 ```
+#### License
+MIT
