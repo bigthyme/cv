@@ -26,10 +26,10 @@ $ cd cv
 $ docker build -t <image_name> <Dockerfile>
 $ docker run -v  -it "$(pwd)":/app <image_name>
 ```
-### Test Installation
+#### Test Installation
 ```
-# I've cloned the https://github.gatech.edu/omscs6476/ps00 repo into this one for testing purposes 
-$ docker run -v  -it "$(pwd)":/app <image_name>  
-# while in docker 
+# I've cloned the https://github.gatech.edu/omscs6476/ps00 repo into this one for testing purposes
+$ docker run -v  -it "$(pwd)":/app <image_name>
+# while in docker
 $ cd ps00 && python ps0.py
 ```
