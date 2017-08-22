@@ -1,7 +1,7 @@
 ## Docker Image for CS 6476
 
-This repo contains a basic setup for Georgia Tech's CS 6476 class based on Fall 2017 requirements. I'm utilizing
-Alpine in an effort to reduce the base image size for python (~384 MB).
+This repo contains a basic setup for Georgia Tech's CS 6476 based on Fall 2017 [requirements](https://github.gatech.edu/omscs6476/ps00). I'm utilizing
+[Alpine Linux](https://en.wikipedia.org/wiki/Alpine_Linux) in an effort to reduce the base image size to ~384 MB.
 
 #### Steps to install for OSX
 ```
