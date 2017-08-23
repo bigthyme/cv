@@ -31,7 +31,7 @@ $ docker run -v  -it "$(pwd)":/app <image_name>
 ```
 #### Test Installation
 ```
-# I've cloned the https://github.gatech.edu/omscs6476/ps00 repo into this one for testing purposes
+# git clone https://github.gatech.edu/omscs6476/ps00 into this repo
 $ docker run -v  -it "$(pwd)":/app <image_name>
 # while in docker
 $ cd ps00 && python ps0.py
