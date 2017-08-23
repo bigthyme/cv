@@ -10,7 +10,8 @@ RUN apt-get install -y -q libavformat-dev libavcodec-dev libavfilter-dev libswsc
 
 # Install numpy & scipy
 RUN pip install 'numpy==1.8.1' && \
-    pip install 'scipy==0.17.1'
+    pip install 'scipy==0.17.1' && \
+    pip install matplotlib
 
 # Install opencv
 RUN wget 'https://github.com/opencv/opencv/archive/2.4.zip' -O opencv-2.4.zip \
@@ -26,7 +27,7 @@ RUN wget 'https://github.com/opencv/opencv/archive/2.4.zip' -O opencv-2.4.zip \
         -D INSTALL_PYTHON_EXAMPLES=OFF \
         -D WITH_TBB=ON .. \
     && make -j4 && make install && cd / && rm -rf opencv-2.4 && \
-    apk del libavformat-dev libavcodec-dev libavfilter-dev
+    apk del libavformat-dev libavcodec-dev libavfilter-dev \
     libtiff-dev libjasper-dev zlib1g-dev libopenexr-dev \
     libeigen3-dev libtbb-dev libswscale-dev libjpeg-dev libpng-dev \
 
