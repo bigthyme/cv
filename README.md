@@ -1,7 +1,10 @@
 ## Docker Image for CS 6476
 
-TL;DR - this successfully installs the following:
-NumPy 1.11+, SciPy 0.17+ and OpenCV 2.4.13
+TL;DR - This includes the following:
+Python 2.7, NumPy 1.11+, SciPy 0.17+ and OpenCV 2.4.13
+
+- Disclaimer: b/c we're running matplotlib in docker, `.show` doesn't work as expected.
+I've included an example_plot file to demostrate a workaround.
 
 This repo contains the required python environment for Georgia Tech's CS 6476 [Fall 2017 requirements](https://github.gatech.edu/omscs6476/ps00). The total image size
 for this docker container is `~1.17 GB` but hopefully smaller after a few more iterations.

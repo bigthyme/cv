@@ -8,8 +8,9 @@ RUN apt-get install -y -q libavformat-dev libavcodec-dev libavfilter-dev libswsc
     wget cmake clang unzip software-properties-common && \
     add-apt-repository ppa:jonathonf/ffmpeg
 
-# Install numpy
-RUN pip install 'numpy==1.8.1'
+# Install numpy & scipy
+RUN pip install 'numpy==1.8.1' && \
+    pip install 'scipy==0.17.1'
 
 # Install opencv
 RUN wget 'https://github.com/opencv/opencv/archive/2.4.zip' -O opencv-2.4.zip \
