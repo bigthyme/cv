@@ -1,32 +1,33 @@
-FROM python:2.7.11-alpine
+FROM python:2.7
 
-# patch sysctl issue
-ADD sysctl.patch /tmp/
+RUN apt-get update
+# Install ffmpeg
+RUN apt-get install -y -q libavformat-dev libavcodec-dev libavfilter-dev libswscale-dev libjpeg-dev libpng-dev \
+    libtiff-dev libjasper-dev zlib1g-dev libopenexr-dev \
+    libeigen3-dev libtbb-dev yasm nasm build-essential \
+    wget cmake clang unzip software-properties-common && \
+    add-apt-repository ppa:jonathonf/ffmpeg
 
-# Install deps.
-RUN echo "@edge-testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && echo "@edge-community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
-# Install numpy deps
-RUN apk update && apk upgrade && apk add py-pip alpine-sdk bash clang clang-dev cmake pkgconf wget
-RUN ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install --upgrade 'numpy==1.8.1'
-# Install OpenCV deps
-RUN apk add libtbb@edge-testing libtbb-dev@edge-testing libjpeg libjpeg-turbo-dev x264 x264-dev ffmpeg libpng libpng-dev tiff tiff-dev libjasper jasper-dev python python-dev linux-headers && \
-cd /tmp && \
-wget -O opencv-2.4.13.2.tar.gz https://github.com/opencv/opencv/archive/2.4.13.2.tar.gz && \
-tar -xzf opencv-2.4.13.2.tar.gz && \
-cd /tmp/opencv-2.4.13.2 && \
-patch -p1 < /tmp/sysctl.patch && \
-mkdir build && \
-cd build && \
-CC=/usr/bin/clang CXX=/usr/bin/clang++ cmake -D CMAKE_BUILD_TYPE=RELEASE \
--D INSTALL_C_EXAMPLES=OFF \
--D INSTALL_PYTHON_EXAMPLES=OFF \
--D CMAKE_INSTALL_PREFIX=/usr/local \
--D BUILD_EXAMPLES=OFF .. && \
-make -j4 && \
-make install && \
-cd / && \
-rm -rf /tmp/opencv-2.4.13.2* /tmp/sysctl.patch && \
-apk del build-base clang clang-dev cmake git pkgconf wget x264-dev libtbb-dev libjpeg-turbo-dev libpng-dev tiff-dev jasper-dev python-dev
+# Install numpy
+RUN pip install 'numpy==1.8.1'
+
+# Install opencv
+RUN wget 'https://github.com/opencv/opencv/archive/2.4.zip' -O opencv-2.4.zip \
+    && unzip opencv-2.4.zip \
+    && rm opencv-2.4.zip \
+    && mkdir -p opencv-2.4/release \
+    && cd opencv-2.4/release \
+    && cmake -D CMAKE_BUILD_TYPE=RELEASE \
+        -D CMAKE_INSTALL_PREFIX=/usr/local \
+        -D BUILD_PYTHON_SUPPORT=ON \
+        -D WITH_XINE=ON \
+        -D BUILD_EXAMPLES=OFF \
+        -D INSTALL_PYTHON_EXAMPLES=OFF \
+        -D WITH_TBB=ON .. \
+    && make -j4 && make install && cd / && rm -rf opencv-2.4 && \
+    apk del libavformat-dev libavcodec-dev libavfilter-dev
+    libtiff-dev libjasper-dev zlib1g-dev libopenexr-dev \
+    libeigen3-dev libtbb-dev libswscale-dev libjpeg-dev libpng-dev \
 
 # Import proper python deps
 ENV PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages

@@ -1,7 +1,10 @@
 ## Docker Image for CS 6476
 
-This repo contains a basic setup for Georgia Tech's CS 6476 based on Fall 2017 [requirements](https://github.gatech.edu/omscs6476/ps00). I'm utilizing
-[Alpine Linux](https://en.wikipedia.org/wiki/Alpine_Linux) in an effort to reduce the base image size to ~384 MB.
+TL;DR - this successfully installs the following:
+NumPy 1.11+, SciPy 0.17+ and OpenCV 2.4.13
+
+This repo contains the required python environment for Georgia Tech's CS 6476 [Fall 2017 requirements](https://github.gatech.edu/omscs6476/ps00). The total image size
+for this docker container is `~1.17 GB` but hopefully smaller after a few more iterations.
 
 #### Steps to install for OSX
 ```
@@ -32,6 +35,7 @@ $ docker run -v  -it "$(pwd)":/app <image_name>
 $ docker run -v  -it "$(pwd)":/app <image_name>
 # while in docker
 $ cd ps00 && python ps0.py
+> hopefully passes...
 ```
 #### License
 MIT
