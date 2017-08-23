@@ -26,10 +26,7 @@ RUN wget 'https://github.com/opencv/opencv/archive/2.4.zip' -O opencv-2.4.zip \
         -D BUILD_EXAMPLES=OFF \
         -D INSTALL_PYTHON_EXAMPLES=OFF \
         -D WITH_TBB=ON .. \
-    && make -j4 && make install && cd / && rm -rf opencv-2.4 && \
-    apk del libavformat-dev libavcodec-dev libavfilter-dev \
-    libtiff-dev libjasper-dev zlib1g-dev libopenexr-dev \
-    libeigen3-dev libtbb-dev libswscale-dev libjpeg-dev libpng-dev \
+    && make -j4 && make install && cd / && rm -rf opencv-2.4
 
 # Import proper python deps
 ENV PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
