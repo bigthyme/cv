@@ -9,7 +9,7 @@ RUN apt-get install -y -q libavformat-dev libavcodec-dev libavfilter-dev libswsc
     add-apt-repository ppa:jonathonf/ffmpeg
 
 # Install numpy & scipy
-RUN pip install 'numpy==1.8.1' && \
+RUN pip install 'numpy==1.11.1' && \
     pip install 'scipy==0.17.1' && \
     pip install matplotlib
 

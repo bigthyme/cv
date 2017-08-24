@@ -27,15 +27,15 @@ $ docker version
 
 #### How to run this particular image?
 ```
-$ git clone git@github.com:bigthyme/cv.git
+$ git clone https://github.com/bigthyme/cv.git
 $ cd cv
 $ docker build -t <image_name> <Dockerfile>
-$ docker run -v  -it "$(pwd)":/app <image_name>
+$ docker run -v -it "$(pwd)":/app <image_name>
 ```
 #### Test Installation
 ```
-# git clone https://github.gatech.edu/omscs6476/ps00 into this repo
-$ docker run -v  -it "$(pwd)":/app <image_name>
+# from your host machine, git clone https://github.gatech.edu/omscs6476/ps00 into this repo
+$ docker run -v -it "$(pwd)":/app <image_name>
 # while in docker
 $ cd ps00 && python ps0.py
 > hopefully passes...
