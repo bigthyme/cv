@@ -11,7 +11,8 @@ RUN apt-get install -y -q libavformat-dev libavcodec-dev libavfilter-dev libswsc
 # Install numpy & scipy
 RUN pip install 'numpy==1.11.1' && \
     pip install 'scipy==0.17.1' && \
-    pip install matplotlib
+    pip install matplotlib && \
+    pip install tensorflow
 
 # Install opencv
 RUN wget 'https://github.com/opencv/opencv/archive/2.4.zip' -O opencv-2.4.zip \
